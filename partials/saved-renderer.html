@@ -1,0 +1,26 @@
+<!-- <h3>Browsing {{totalSaved}} saved fossils</h3> -->
+<!-- <h3 ng-if="errorMsg">{{errorMsg}}</h3> -->
+<div ng-controller="SavedListCtrl">
+	<div id="savedbannerwrapper">
+		 
+		<img class="savedpagebutton left" src="img/TriangleLeft.svg" ng-click="loadList(+offset-4)" ng-if="offset > 3">
+		<h2>{{totalSaved}} Saved</h2>
+		<img class="savedpagebutton right" src="img/TriangleRight.svg" ng-if="offset < totalSaved-4" ng-click="loadList(+offset+4)" >
+		
+	</div>
+
+	<div id="savedlistwrapper">
+
+
+	<!-- 	<p class="savelistnav" ng-click="loadList(+offset-5)" ng-if="offset > 5"> previous</p> -->
+		
+		<div ng-repeat="d in list" class="saveditem"> 
+
+		  <a href="#/saved/{{d.id}}"><canvas class="listcanvas" width="1000" height="700" compositor saved="d" ></canvas></a>
+		    <p>{{totalSaved - offset - $index}}: {{d.id}} <span class="date">saved {{d.dateString}}</span></p>
+		</div>
+
+	<!-- 	<p class="savelistnav" ng-click="loadList(+offset+5)" ng-if="offset < totalSaved-5"> next ({{totalSaved-offset-5}} more)</p> -->
+
+	</div>
+</div>

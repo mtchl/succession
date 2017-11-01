@@ -1,0 +1,22 @@
+  <div id="savedheader" class="bannerwrapper"><h3 class="banner">Saved composite {{item.id}}</h3> </div>
+  <div id="outerwrapper">
+  <div id="wrapper" >
+    <span id="status" ng-if="compositeStatus!='loaded'">{{compositeStatus}}</span>
+    <canvas id="cvs" ng-if="item" class="itemcanvas" width="1000" height="700" compositor saved="item" proxy="true"></canvas>
+    <p ng-click="renderCanvas()">Render</p>
+  </div>  
+
+      <ul id="infoitems">
+        <li ng-repeat="i in item.drawData">
+          <a target="_blank" ng-href="https://www.flickr.com/photos/{{i.flickr.owner}}/{{i.flickr.id}}">
+            <div class="thumb" style="background-image:url('{{i.flickr.thumb}}')"></div>
+          </a>
+          {{i.flickr.title}} ({{ownerMap[i.flickr.owner]}})</a></li>
+      </ul>
+
+       <div id="buttons">
+        <a href="#">
+          <div id="advanceButton" class="button" title="generate another composite"></div>
+        </a>
+      </div>
+</div>

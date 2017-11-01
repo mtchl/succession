@@ -1,0 +1,24 @@
+<div id="outerwrapper">
+  <div id="wrapper" >
+    <!-- <span id="status" ng-if="compositeStatus!='loaded'">LOADING {{loadindex}}/5</span> -->
+    <div id="canvasfadewrapper" ng-class="{'show':showCanvas, 'hide': !showCanvas}">
+    <canvas id="cvs" width="1000" height="700"   proxy="false"> </canvas>
+    </div>
+
+  </div>
+      <ul id="infoitems" ng-show="showCanvas" >
+        <li ng-repeat="i in [0,1,2,3,4]" ng-class="{'loaded': drawlist[i]}">
+          <a target="_blank" ng-href="https://www.flickr.com/photos/{{drawlist[i].owner}}/{{drawlist[i].id}}">
+            <div class="thumb" style="background-image:url('{{drawlist[i].thumb}}')"></div>
+          </a>
+          {{drawlist[i].title}} - {{ownerMap[drawlist[i].owner]}}</li>
+      </ul>
+
+    <div id="buttons">
+      <div id="advanceButton" class="button" ng-click="resumePlaying()" title="generate another composite"></div>
+      <div id="saveButton" class="button" ng-click="postData()" title="save this composite"></div>
+
+    </div>
+</div>
+
+

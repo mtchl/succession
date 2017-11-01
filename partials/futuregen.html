@@ -1,0 +1,13 @@
+<!-- <h3>Browsing {{totalSaved}} saved fossils</h3> -->
+<!-- <h3 ng-if="errorMsg">{{errorMsg}}</h3> -->
+<div id="futureGenWrapper" ng-controller="futureGenCtrl">
+	<h2>next?</h2>
+	<div id="futureGenInner">
+		<div id="statementWrapper">	
+			<div class="bitContainer" ng-repeat="s in statement" ng-style="{'width': getElementWidth(s[0])+'px'}">
+					<div ng-repeat="b in s" class="textBit" ng-click="changeThis($parent.$index-1)">{{b}} </div>
+			</div>
+		</div>	
+	</div>
+	<span id="dummyTextBit" style="position:absolute; top:2000px; visibility:hidden"></span>
+</div>
