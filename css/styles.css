@@ -26,6 +26,10 @@ body{
     text-decoration:underline;
   }
 
+  span.strikethrough{
+    text-decoration: line-through;
+  }
+
   div#content{
   /*margin-top:2.5em;*/
   min-height:66em; /* to maintain height while transitioning the canvas */
@@ -311,9 +315,15 @@ img.itemimg.loading{
   }
 
   #saveButton{
-    background-image:url(../img/white-heart.svg);
-    background-position: 50% 60%;
-    background-size: 55%;
+    background-image:url(../img/white-star.svg);
+    background-position: 50% 45%;
+    background-size: 60%;
+    cursor:default;
+  }
+
+  #saveButton:hover{
+    opacity:0.6;
+    background-color: #333;
   }
 
    #advanceButton{

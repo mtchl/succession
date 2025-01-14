@@ -2,16 +2,15 @@
 
 	<div id="savedbannerwrapper">
 		 
-		<img class="savedpagebutton left" src="img/TriangleLeft.svg" ng-click="loadList(+offset-4)" ng-if="offset > 3">
 		<h2>{{totalSaved}} Saved</h2>
-		<img class="savedpagebutton right" src="img/TriangleRight.svg" ng-if="offset < totalSaved-4" ng-click="loadList(+offset+4)" >
+
 		
 	</div>
 
 	<div id="savedlistwrapper">
 		<div ng-repeat="d in list" class="saveditem"> 
 		  <a href="#/saved/{{d.id}}">
-		  	<img class="listcanvas" ng-src="{{baseURL}}/storage/images/{{d.id}}.png">
+		  	<img class="listcanvas" ng-src="storage/images/{{d.id}}.png">
 		  </a>
 		  <p>{{totalSaved - offset - $index}}: {{d.id}} <span class="date">saved {{d.dateString}}</span></p>
 		</div>

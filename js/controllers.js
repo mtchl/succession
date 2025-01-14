@@ -266,7 +266,7 @@ successionControllers.controller('SavedListCtrl', ['$scope','$http','$rootScope'
 	function($scope,$http,$rootScope){
 	
 		$scope.offset = 0;
-		$scope.baseURL = "http://mtchl.net/succession";
+		$scope.baseURL = "https://mtchl.net/succession";
 
 		$scope.loadList = function(newoffset){
 
@@ -278,11 +278,28 @@ successionControllers.controller('SavedListCtrl', ['$scope','$http','$rootScope'
 
 			//console.log("loading saved files from " + $scope.baseURL + "/storage/list.php?start="+$scope.offset);
 
+			/*
 			$http.get($scope.baseURL + "/storage/list.php?start="+$scope.offset).success(function(data){
 				//console.log("loading saved files from " + $scope.baseURL + "/storage/list.php?start="+$scope.offset);
 				$scope.errorMsg = "";
 				$scope.totalSaved = data.total;
 				$scope.list = data.items;
+				$scope.list.forEach(function(i,x){ // build nice dates
+					var d =  new Date(i.id);
+					i.dateString = d.toDateString();
+					i.idx = +x+$scope.offset;
+				});
+			}).error(function(){
+				console.log("Could not load saved composite data");
+			});
+			*/
+
+			$http.get("storage/data/combined_data.json").success(function(data){
+				//console.log("loading saved files from " + $scope.baseURL + "/storage/list.php?start="+$scope.offset);
+				$scope.errorMsg = "";
+				$scope.totalSaved = data.length;
+				$scope.list = data;
+				console.log($scope.list)
 				$scope.list.forEach(function(i,x){ // build nice dates
 					var d =  new Date(i.id);
 					i.dateString = d.toDateString();
@@ -320,7 +337,7 @@ successionControllers.controller('SavedListCtrl', ['$scope','$http','$rootScope'
 successionControllers.controller('SavedItemCtrl', ['$scope','$routeParams','$http','$rootScope',
 	function($scope,$routeParams,$http,$rootScope){
 
-		$scope.baseURL = "http://mtchl.net/succession";;
+		$scope.baseURL = "https://mtchl.net/succession";;
 
 		$scope.loading = true;
 
@@ -340,7 +357,8 @@ successionControllers.controller('SavedItemCtrl', ['$scope','$routeParams','$htt
 		};
 	
 		$scope.itemID = $routeParams.itemID;
-		$http.get($scope.baseURL + "/storage/get.php?id=" + $scope.itemID ).success(function(data){
+		// $http.get($scope.baseURL + "/storage/get.php?id=" + $scope.itemID ).success(function(data){
+		$http.get("storage/data/" + $scope.itemID + ".json" ).success(function(data){
 			
 			//$http.get("http://mtchl.net/succession/storage/data/" + $scope.itemID + ".json").success(function(data){
 			//console.log("loading from " + "http://mtchl.net/succession/storage/data/" + $scope.itemID + ".json");
@@ -360,7 +378,7 @@ successionControllers.controller('SavedItemCtrl', ['$scope','$routeParams','$htt
 				$scope.$apply();
 			}
 
-			savedimg.src = $scope.baseURL + "/storage/images/" + $scope.itemID + ".png";
+			savedimg.src = "storage/images/" + $scope.itemID + ".png";
 
 		}).error(function(data){
 			//$scope.loadStatus = "error loading!";

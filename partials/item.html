@@ -3,7 +3,7 @@
   <div id="wrapper" >
     <!-- <span id="status" ng-if="compositeStatus!='loaded'">{{compositeStatus}}</span> -->
      <!-- <canvas id="cvs" ng-if="item" class="itemcanvas" width="1000" height="700" compositor saved="item"></canvas>  -->
-    <img class="itemimg" ng-src="{{baseURL}}/storage/images/{{item.id}}.png" ng-class="{'loading': loading}">
+    <img class="itemimg" ng-src="storage/images/{{item.id}}.png" ng-class="{'loading': loading}">
   </div>  
 
       <ul id="infoitems">
@@ -17,7 +17,7 @@
        <div id="buttons">
         <a href="#">
           <div id="advanceButton" class="button" title="generate another composite"></div>
-          <!-- <div id="saveButton" class="button" ng-click="saveImageOnly(item)" title="save image only"></div> -->
+          <div id="saveButton" class="button" ng-click="saveImageOnly(item)" title="save image only"></div>
         </a>
       </div>
 </div>
